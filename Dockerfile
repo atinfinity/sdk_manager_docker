@@ -45,6 +45,10 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
         iproute2 \
         iptables \
         dnsutils \
+        gpg \
+        gpg-agent \
+        gpgconf \
+        gpgv \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
