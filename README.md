@@ -1,7 +1,7 @@
 # sdk_manager_docker
 
 ## Introduction
-This is a Dockerfile to use [NVIDIA SDK Manager](https://developer.nvidia.com/embedded/dlc/nv-sdk-manager) on Docker container.
+This is a Dockerfile to use [NVIDIA SDK Manager](https://docs.nvidia.com/sdk-manager/) on Docker container.
 
 ## Requirements
 * Docker
