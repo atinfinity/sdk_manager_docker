@@ -1,5 +1,9 @@
 FROM ubuntu:18.04
 
+# ARGUMENTS
+ARG SDK_MANAGER_VERSION=0.9.14-4964
+ARG SDK_MANAGER_DEB=sdkmanager_${SDK_MANAGER_VERSION}_amd64.deb
+
 # add new sudo user
 ENV USERNAME jetpack
 ENV HOME /home/$USERNAME
@@ -63,10 +67,10 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 # install SDK Manager
 USER jetpack
-COPY sdkmanager_0.9.12-4180_amd64.deb /home/$USERNAME/
-WORKDIR /home/$USERNAME
-RUN sudo apt install ./sdkmanager_0.9.12-4180_amd64.deb
+COPY ${SDK_MANAGER_DEB} /home/${USERNAME}/
+WORKDIR /home/${USERNAME}
+RUN sudo apt-get install -f /home/${USERNAME}/${SDK_MANAGER_DEB}
 
 USER root
 RUN echo "${USERNAME}:${USERNAME}" | chpasswd
-RUN rm /home/$USERNAME/sdkmanager_0.9.12-4180_amd64.deb
+RUN rm /home/${USERNAME}/${SDK_MANAGER_DEB}

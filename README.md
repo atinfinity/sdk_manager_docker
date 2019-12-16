@@ -10,7 +10,7 @@ This is a Dockerfile to use [NVIDIA SDK Manager](https://docs.nvidia.com/sdk-man
 ### Download NVIDIA SDK Manager
 Please download the package of NVIDIA SDK Manager from <https://developer.nvidia.com/embedded/dlc/nv-sdk-manager>.  
 And, please put the package of NVIDIA SDK Manager in the same directory as the Dockerfile.  
-This time, I used `sdkmanager_0.9.12-4180_amd64.deb`.
+This time, I used `sdkmanager_0.9.14-4964_amd64.deb`.
 
 ### Build Docker image
 ```
