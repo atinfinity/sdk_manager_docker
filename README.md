@@ -17,6 +17,12 @@ This time, I used `sdkmanager_0.9.14-4964_amd64.deb`.
 $ docker build -t jetpack .
 ```
 
+To build a Docker image with a specific SDK Manager version override the ``SDK_MANAGER_VERSION`` variable in the Docker command line
+
+```
+$ docker build --build-arg SDK_MANAGER_VERSION=1.0.0-5517 -t jetpack .
+```
+
 ### Create Docker container
 ```
 $ ./launch_container.sh
