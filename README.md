@@ -8,9 +8,9 @@ This is a Dockerfile to use [NVIDIA SDK Manager](https://docs.nvidia.com/sdk-man
 
 ## Preparation
 ### Download NVIDIA SDK Manager
-Please download the package of NVIDIA SDK Manager from <https://developer.nvidia.com/embedded/dlc/nv-sdk-manager>.  
+Please download the package of NVIDIA SDK Manager from <https://developer.nvidia.com/nvidia-sdk-manager>.  
 And, please put the package of NVIDIA SDK Manager in the same directory as the Dockerfile.  
-This time, I used `sdkmanager_0.9.14-4964_amd64.deb`.
+This time, I used `sdkmanager_1.0.0-5517_amd64.deb`.
 
 ### Build Docker image
 ```
@@ -36,5 +36,5 @@ $ sdkmanager
 ```
 
 You need type user password during setup of NVIDIA SDK Manager.  
-In [this Dockerfile](https://github.com/atinfinity/sdk_manager_docker/blob/master/Dockerfile#L71), user password is set to `jetpack`.  
+In [this Dockerfile](https://github.com/atinfinity/sdk_manager_docker/blob/master/Dockerfile#L75), user password is set to `jetpack`.  
 So, please type `jetpack` as user password.
