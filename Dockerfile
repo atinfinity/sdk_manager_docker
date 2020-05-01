@@ -19,40 +19,27 @@ RUN useradd -m $USERNAME && \
         groupmod --gid 1000 $USERNAME
 
 # install package
-ENV DEBIAN_FRONTEND noninteractive
-RUN apt-get update && apt-get install -y --no-install-recommends \
+RUN yes | unminimize && \
+    apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
-        sudo \
-        apt-utils \
-        tzdata \
         git \
-        bash-completion \
-        command-not-found \
-        libgconf-2-4 \
-        libcanberra-gtk-module \
-        libcanberra-gtk3-module \
-        libgtk-3-0 \
-        libx11-xcb1 \
-        libxss1 \
-        libnss3 \
-        libxtst6 \
-        python \
-        sshpass \
-        less \
-        net-tools \
-        usbutils \
-        locales \
-        netcat-traditional \
-        netcat-openbsd \
-        openssh-client \
-        iproute2 \
-        iptables \
-        dnsutils \
         gpg \
         gpg-agent \
         gpgconf \
         gpgv \
+        less \
+        libcanberra-gtk-module \
+        libcanberra-gtk3-module \
+        libgconf-2-4 \
+        libgtk-3-0 \
+        libnss3 \
+        libx11-xcb1 \
+        libxss1 \
+        libxtst6 \
+        net-tools \
+        python \
+        sshpass \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
