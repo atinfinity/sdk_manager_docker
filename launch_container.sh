@@ -9,13 +9,14 @@ mkdir -p jetpack_home/nvidia
 mkdir -p jetpack_home/Downloads
 JETPACK_HOME=$(realpath ./jetpack_home)
 
-docker run --privileged --rm -it \
+docker run --privileged -it \
            --volume=$XSOCK:$XSOCK:rw \
            --volume=$XAUTH:$XAUTH:rw \
            --volume=/dev:/dev:rw \
            --volume=$JETPACK_HOME/nvidia:/home/jetpack/nvidia:rw \
            --volume=$JETPACK_HOME/Downloads:/home/jetpack/Downloads:rw \
            --shm-size=1gb \
+           --storage-opt size=20G \
            --env="XAUTHORITY=${XAUTH}" \
            --env="DISPLAY=${DISPLAY}" \
            --env=TERM=xterm-256color \
