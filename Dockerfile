@@ -23,6 +23,8 @@ RUN yes | unminimize && \
     apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
         curl \
+        binfmt-support \
+        qemu-user-static \
         git \
         gpg \
         gpg-agent \
