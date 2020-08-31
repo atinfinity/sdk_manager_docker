@@ -12,8 +12,8 @@ assignees: ''
 ### Required information:
 - Operating system of host machine => :grey_question:
 - Docker version => :grey_question:
-- NVIDIA SDK Manager Version => :grey_question:
-
+- NVIDIA SDK Manager version => :grey_question:
+- NVIDIA Jetson model(Jetson AGX Xavier, Jetson Nano etc...) => :grey_question:
 
 ### Description of the bug
 <!-- Provide a clear and concise description of what the bug is. -->
