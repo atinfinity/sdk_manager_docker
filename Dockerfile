@@ -40,6 +40,7 @@ RUN yes | unminimize && \
         net-tools \
         python \
         sshpass \
+        chromium-browser \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
