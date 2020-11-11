@@ -41,6 +41,8 @@ RUN yes | unminimize && \
         python \
         sshpass \
         chromium-browser \
+        qemu-user-static \
+        binfmt-support \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
@@ -62,3 +64,9 @@ RUN sudo apt-get install -f /home/${USERNAME}/${SDK_MANAGER_DEB}
 USER root
 RUN echo "${USERNAME}:${USERNAME}" | chpasswd
 RUN rm /home/${USERNAME}/${SDK_MANAGER_DEB}
+
+  # Configure qemu-user-static to avoid errors of the type:  ERROR : File System and OS : chroot: failed to run command 'mount': Exec format error.
+CMD sudo mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
+CMD sudo update-binfmts --enable qemu-aarch64
+CMD sudo update-binfmts --enable qemu-arm
+CMD sudo update-binfmts --enable qemu-armeb
