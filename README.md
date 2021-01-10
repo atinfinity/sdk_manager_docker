@@ -3,6 +3,10 @@
 ## Introduction
 This is a Dockerfile to use [NVIDIA SDK Manager](https://docs.nvidia.com/sdk-manager/) on Docker container.
 
+### Important Information
+NVIDIA release official Docker image(<https://docs.nvidia.com/sdk-manager/docker-containers/index.html>).  
+So, please use this image.
+
 ## Requirements
 * Docker
 
