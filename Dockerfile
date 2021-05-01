@@ -1,7 +1,7 @@
 FROM ubuntu:18.04
 
 # ARGUMENTS
-ARG SDK_MANAGER_VERSION=1.4.0-7363
+ARG SDK_MANAGER_VERSION=1.5.0-7774
 ARG SDK_MANAGER_DEB=sdkmanager_${SDK_MANAGER_VERSION}_amd64.deb
 
 # add new sudo user
@@ -63,6 +63,7 @@ RUN sudo apt-get install -f /home/${USERNAME}/${SDK_MANAGER_DEB}
 RUN rm /home/${USERNAME}/${SDK_MANAGER_DEB}
 
 # configure QEMU to fix https://forums.developer.nvidia.com/t/nvidia-sdk-manager-on-docker-container/76156/18
+# And, I refered to https://github.com/MiroPsota/sdkmanagerGUI_docker
 COPY --chown=jetpack:jetpack configure_qemu.sh /home/${USERNAME}/
 CMD /home/${USERNAME}/configure_qemu.sh
 
