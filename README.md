@@ -38,7 +38,3 @@ Please launch NVIDIA SDK Manager by the following command.
 ```
 $ sdkmanager
 ```
-
-You need type user password during setup of NVIDIA SDK Manager.  
-In [this Dockerfile](https://github.com/atinfinity/sdk_manager_docker/blob/master/Dockerfile#L75), user password is set to `jetpack`.  
-So, please type `jetpack` as user password.
