@@ -57,16 +57,12 @@ RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selectio
 
 # install SDK Manager
 USER jetpack
-COPY ${SDK_MANAGER_DEB} /home/${USERNAME}/
+COPY --chown=jetpack:jetpack ${SDK_MANAGER_DEB} /home/${USERNAME}/
 WORKDIR /home/${USERNAME}
 RUN sudo apt-get install -f /home/${USERNAME}/${SDK_MANAGER_DEB}
-
-USER root
-RUN echo "${USERNAME}:${USERNAME}" | chpasswd
 RUN rm /home/${USERNAME}/${SDK_MANAGER_DEB}
 
-  # Configure qemu-user-static to avoid errors of the type:  ERROR : File System and OS : chroot: failed to run command 'mount': Exec format error.
-CMD sudo mount binfmt_misc -t binfmt_misc /proc/sys/fs/binfmt_misc
-CMD sudo update-binfmts --enable qemu-aarch64
-CMD sudo update-binfmts --enable qemu-arm
-CMD sudo update-binfmts --enable qemu-armeb
+# configure QEMU to fix https://forums.developer.nvidia.com/t/nvidia-sdk-manager-on-docker-container/76156/18
+COPY --chown=jetpack:jetpack configure_qemu.sh /home/${USERNAME}/
+CMD /home/${USERNAME}/configure_qemu.sh
+
