@@ -38,3 +38,15 @@ Please launch NVIDIA SDK Manager by the following command.
 ```
 $ sdkmanager
 ```
+
+## Notes
+
+If you get errors like this, it means that QEMU is not installed in host/container
+
+![image](https://user-images.githubusercontent.com/8092481/117409016-4f604e00-af2e-11eb-87d8-0eb2975b6550.png)
+
+To configure QEMU, run below, either on host, or the running container.
+
+```shell
+$ ./configure_qemu.sh
+```
