@@ -13,8 +13,8 @@ docker run --privileged --rm -it \
            --volume=$XSOCK:$XSOCK:rw \
            --volume=$XAUTH:$XAUTH:rw \
            --volume=/dev:/dev:rw \
-           --volume=$JETPACK_HOME/nvidia:/home/jetpack/nvidia:rw \
-           --volume=$JETPACK_HOME/Downloads:/home/jetpack/Downloads:rw \
+           --volume="$JETPACK_HOME/nvidia":/home/jetpack/nvidia:rw \
+           --volume="$JETPACK_HOME/Downloads":/home/jetpack/Downloads:rw \
            --shm-size=1gb \
            --env="XAUTHORITY=${XAUTH}" \
            --env="DISPLAY=${DISPLAY}" \
