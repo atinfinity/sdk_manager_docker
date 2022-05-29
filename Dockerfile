@@ -1,8 +1,10 @@
 FROM ubuntu:18.04
 
 # ARGUMENTS
-ARG SDK_MANAGER_VERSION=1.5.0-7774
+ARG SDK_MANAGER_VERSION=1.8.0-10363
 ARG SDK_MANAGER_DEB=sdkmanager_${SDK_MANAGER_VERSION}_amd64.deb
+ARG GID=1000
+ARG UID=1000
 
 # add new sudo user
 ENV USERNAME jetpack
@@ -15,8 +17,8 @@ RUN useradd -m $USERNAME && \
         echo "$USERNAME ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers.d/$USERNAME && \
         chmod 0440 /etc/sudoers.d/$USERNAME && \
         # Replace 1000 with your user/group id
-        usermod  --uid 1000 $USERNAME && \
-        groupmod --gid 1000 $USERNAME
+        usermod  --uid ${UID} $USERNAME && \
+        groupmod --gid ${GID} $USERNAME
 
 # install package
 RUN yes | unminimize && \
@@ -48,9 +50,9 @@ RUN yes | unminimize && \
     rm -rf /var/lib/apt/lists/*
 
 # set locale
-RUN locale-gen en_US.UTF-8  
-ENV LANG en_US.UTF-8  
-ENV LANGUAGE en_US:en  
+RUN locale-gen en_US.UTF-8
+ENV LANG en_US.UTF-8
+ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 RUN echo 'debconf debconf/frontend select Noninteractive' | debconf-set-selections
@@ -65,5 +67,4 @@ RUN rm /home/${USERNAME}/${SDK_MANAGER_DEB}
 # configure QEMU to fix https://forums.developer.nvidia.com/t/nvidia-sdk-manager-on-docker-container/76156/18
 # And, I refered to https://github.com/MiroPsota/sdkmanagerGUI_docker
 COPY --chown=jetpack:jetpack configure_qemu.sh /home/${USERNAME}/
-CMD /home/${USERNAME}/configure_qemu.sh
-
+ENTRYPOINT ["/bin/bash", "-c", "/home/jetpack/configure_qemu.sh"]

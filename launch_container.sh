@@ -22,5 +22,4 @@ docker run --privileged --rm -it \
            --env=QT_X11_NO_MITSHM=1 \
            --net=host \
            -u "jetpack"  \
-           jetpack:latest \
-           bash
+           jetpack:latest
