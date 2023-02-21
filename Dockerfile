@@ -45,6 +45,7 @@ RUN yes | unminimize && \
         chromium-browser \
         qemu-user-static \
         binfmt-support \
+        libxshmfence1 \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
