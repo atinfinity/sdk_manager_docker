@@ -18,7 +18,22 @@ NVIDIA released official Docker image(<https://docs.nvidia.com/sdk-manager/docke
 
 Please download the package of NVIDIA SDK Manager from <https://developer.nvidia.com/nvidia-sdk-manager>.  
 And, please put the package of NVIDIA SDK Manager in the same directory as the Dockerfile.  
-This time, I used `sdkmanager_1.8.0-10363_amd64.deb`.
+This time, I used `sdkmanager_1.9.1-10844_amd64.deb`.
+
+### Ensure your user is in the docker group
+
+Run
+```
+groups
+```
+if docker is not one of the groups displayed you need to create the docker group and add your user to it:
+```
+sudo groupadd -f docker
+sudo usermod -aG docker $USER
+```
+You should then reboot the computer to apply the changes to your user.
+Afterwards you can continue with the guide.
+
 
 ### Build Docker image
 
