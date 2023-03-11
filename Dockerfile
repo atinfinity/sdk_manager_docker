@@ -51,7 +51,6 @@ RUN yes | unminimize && \
         sudo \
         wget \
         ca-certificates \
-        libxshmfence1 \
         && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/*
