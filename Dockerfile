@@ -46,6 +46,7 @@ RUN yes | unminimize && \
         sshpass \
         qemu-user-static \
         binfmt-support \
+        libxshmfence1 \
         tzdata \
         locales \
         sudo \
